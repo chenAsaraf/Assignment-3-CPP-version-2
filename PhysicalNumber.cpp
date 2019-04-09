@@ -20,7 +20,7 @@ PhysicalNumber::PhysicalNumber(float amount, Unit some_unit){
 //Checks what type of unit the number is 
 const int PhysicalNumber::which_unit(){
       int ans = 0;
-      switch(u){
+      switch(_unit){
           case CM: {
               ans = 1;
               break;
