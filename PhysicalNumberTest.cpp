@@ -23,17 +23,22 @@ int main() {
     PhysicalNumber b(300, Unit::M);
     PhysicalNumber c(2, Unit::HOUR);
     PhysicalNumber d(30, Unit::MIN);
-    
-    PhysicalNumber e(100, Unit::KM);
-    PhysicalNumber f(999, Unit::M);
-    PhysicalNumber g(5, Unit::HOUR);
-    PhysicalNumber h(50, Unit::MIN);
-    
-    PhysicalNumber i(22, Unit::KM);
-    PhysicalNumber j(395, Unit::M);
-    PhysicalNumber k(16, Unit::HOUR);
-    PhysicalNumber l(17, Unit::MIN);
 
+    //Student arguments for tests:
+    //Length:
+    PhysicalNumber cm1(1, Unit::CM);
+    PhysicalNumber metere0_1(0.1, Unit::M);
+    PhysicalNumber km100(100, Unit::KM);
+    //Time:
+    PhysicalNumber sec2(2, Unit::SEC);
+    PhysicalNumber min50(50, Unit::MIN);
+    PhysicalNumber hour50(50, Unit::HOUR);
+    //Weight:
+    PhysicalNumber gram999(999, Unit::G);
+    PhysicalNumber kg19(19, Unit::KG);
+    PhysicalNumber ton40(40, Unit::TON);
+    
+    
     testcase
     .setname("Basic output")
     .CHECK_OUTPUT(a, "2[km]")
@@ -55,37 +60,17 @@ int main() {
     .CHECK_THROWS(b+c)
     .CHECK_THROWS(b+d)
 
-    .setname("Compatible dimensions2.0")
-    .CHECK_OUTPUT(j+i, "22395[m]")
-    .CHECK_OUTPUT((i+=j), "22.395[km]")
-    .CHECK_OUTPUT(i, "22.395[km]")
-    .CHECK_OUTPUT(i+i, "44.79[km]")
-    .CHECK_OUTPUT(j-j, "0[m]")
-    .CHECK_OUTPUT(k, "16[hour]")
-    .CHECK_OUTPUT(l, "17[min]")
-    .CHECK_OUTPUT(l+k, "977[min]")
-
-    .setname("Compatible dimensions3.0")
-    .CHECK_OUTPUT(f+e, "100999[m]")
-    .CHECK_OUTPUT((e+=f), "100.999[km]")
-    .CHECK_OUTPUT(e, "100.999[km]")
-    .CHECK_OUTPUT(e+e, "201.998[km]")
-    .CHECK_OUTPUT(f-f, "0[m]")
-    .CHECK_OUTPUT(g, "5[hour]")
-    .CHECK_OUTPUT(h, "50[min]")
-    .CHECK_OUTPUT(g-h, "-4.16667[hour]")
-
-    .setname("Incompatible dimensions2.0")
-    .CHECK_THROWS(f+g)
-    .CHECK_THROWS(e+g)
-    .CHECK_THROWS(e-h)
-    .CHECK_THROWS(f+h)
-
     .setname("Basic input")
     .CHECK_OK(istringstream("700[kg]") >> a)
+    .CHECK_OUTPUT((gram999 += kg19), "1700[kg]")
+
+    //Student tests:
+    /* += Operator */
     .CHECK_OUTPUT((a += PhysicalNumber(1, Unit::TON)), "1700[kg]")
 
-
+      
+      
+      
       .setname("...")
 
       .print(cout, /*show_grade=*/false);
