@@ -4,7 +4,7 @@
 #include "PhysicalNumber.h"
 
 using std::cout, std::string;
-using ariel::Unit, ariel::PhysicalNumber, ariel::equalsDimension;
+using ariel::Unit, ariel::PhysicalNumbe;
 
 /*~Implamentation of PhysicalNumber class:~*/
 
@@ -78,7 +78,7 @@ PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& 
 
 //Subtraction operator:
 PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& b) {
-    if(!equalsDimension(a, b)){
+    if(!ariel::equalsDimension(a, b)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float aUnit = a.convert();
@@ -91,7 +91,7 @@ PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& 
 
 //Shortcut function to add
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
-    if(!equalsDimension(*this, other)){
+    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -104,7 +104,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
 
 //Shortcut function to subtraction
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
-    if(!equalsDimension(this, other)){
+    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -128,7 +128,7 @@ PhysicalNumber& PhysicalNumber::operator+ (){
 
 //Equals operator:    
 bool PhysicalNumber::operator== (const PhysicalNumber& other){
-    if(!equalsDimension(this, other)){
+    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -140,7 +140,7 @@ bool PhysicalNumber::operator== (const PhysicalNumber& other){
 
 //Greater operator:    
 bool PhysicalNumber::operator> (const PhysicalNumber& other){
-    if(!equalsDimension(this, other)){
+    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -152,7 +152,7 @@ bool PhysicalNumber::operator> (const PhysicalNumber& other){
 
 //Smaller then oerator:
 bool PhysicalNumber::operator< (const PhysicalNumber& other){
-    if(!equalsDimension(this, other)){
+    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -164,7 +164,7 @@ bool PhysicalNumber::operator< (const PhysicalNumber& other){
 
 //Greater then or equals operator: 
 bool PhysicalNumber::operator>= (const PhysicalNumber& other){
-   if(!equalsDimension(this, other)){
+   if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -176,7 +176,7 @@ bool PhysicalNumber::operator>= (const PhysicalNumber& other){
 
 //Smaller then or equals operator: 
 bool PhysicalNumber::operator<= (const PhysicalNumber& b){
-   if(!equalsDimension(this, other)){
+   if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -188,7 +188,7 @@ bool PhysicalNumber::operator<= (const PhysicalNumber& b){
 
 //Not equals operator:
 bool PhysicalNumber::operator!= (const PhysicalNumber& other){
-   if(!equalsDimension(this, other)){
+   if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
