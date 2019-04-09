@@ -21,42 +21,15 @@ PhysicalNumber::PhysicalNumber(float amount, Unit some_unit){
 const int PhysicalNumber::which_unit(){
       int ans = 0;
       switch(_unit){
-          case CM: {
-              ans = 1;
-              break;
-          }
-          case M: {
-              ans = 2;
-              break;
-          }
-          case KM: {
-              ans = 3;
-              break;
-          }
-          case SEC: {
-              ans = 4;
-              break;
-          }
-          case MIN: {
-              ans = 5;
-              break;
-          }
-          case HOUR: {
-              ans = 6;
-              break;
-          }
-          case G: {
-              ans = 7;
-              break;
-          }
-          case KG: {
-              ans = 8;
-              break;
-          }
-          case TON: {
-              ans = 9;
-              break;
-          }
+          case CM:  ans = 1; break;
+          case M:   ans = 2; break;
+          case KM:  ans = 3; break;
+          case SEC: ans = 4; break;
+          case MIN: ans = 5; break;
+          case HOUR:ans = 6; break;
+          case G:   ans = 7; break;
+          case KG:  ans = 8; break;
+          case TON: ans = 9; break;
       }//end switch
       return ans;
   }
@@ -74,42 +47,16 @@ bool PhysicalNumber::equalsDimension(const PhysicalNumber& a ,const PhysicalNumb
 const float PhysicalNumber::convert(){
         float convertUnit = 0;
         switch(_unit) {
-            case CM: {
-                convertUnit = 1;
-                break;
-            }
-            case M: {
-                convertUnit = 100;
-                break;
-            }
-            case KM: {
-                convertUnit = 100000;
-                break;
-            }
-            case SEC: {
-                convertUnit = 1;
-                break;
-            }
-            case MIN: {
-                convertUnit = 60;
-                break;
-            }
-            case HOUR: {
-                convertUnit = 3600;
-                break;
-            }
-            case G: {
-                convertUnit = 1;
-                break;
-            }
-            case KG: {
-                convertUnit = 100;
-                break;
-            }
-            case TON: {
-                convertUnit = 1000000;
-                break;
-            }
+            case CM:  convertUnit = 1; break;
+            case M:   convertUnit = 100; break;
+            case KM:  convertUnit = 100000; break;
+            case SEC: convertUnit = 1; break;
+            case MIN: convertUnit = 60; break;
+            case HOUR:convertUnit = 3600; break;
+            case G:   convertUnit = 1; break;
+            case KG:  convertUnit = 100; break;
+            case TON: convertUnit = 1000000; break;
+        }
         return convertUnit;
     }
 
