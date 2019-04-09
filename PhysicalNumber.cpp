@@ -9,7 +9,7 @@ using ariel::Unit, ariel::PhysicalNumber;
 /*~Implamentation of PhysicalNumber class:~*/
 
 //Constructor: input- the amount and the unit's amount
-PhysicalNumber::PhysicalNumber(float amount, Unit some_unit){
+PhysicalNumber::PhysicalNumber(double amount, Unit some_unit){
     _unit = some_unit;
     _amount = amount;
 }
@@ -44,8 +44,8 @@ bool ariel::equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b){
 
 
 //Auxiliary function for converting units     
-float PhysicalNumber::convert() const{
-        float convertUnit = 0;
+double PhysicalNumber::convert() const{
+        double convertUnit = 0;
         switch(_unit) {
             case CM:  convertUnit = 1; break;
             case M:   convertUnit = 100; break;
@@ -68,10 +68,10 @@ PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& 
     if(!ariel::equalsDimension(a, b)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float aUnit = a.convert();
-        float aInBasic = aUnit * a._amount;
-        float bInBasic = b.convert() * b._amount;
-        float newAmount = (aInBasic + bInBasic)/ aUnit;
+        double aUnit = a.convert();
+        double aInBasic = aUnit * a._amount;
+        double bInBasic = b.convert() * b._amount;
+        double newAmount = (aInBasic + bInBasic)/ aUnit;
         return PhysicalNumber(newAmount, a._unit);
     }
 }
@@ -81,10 +81,10 @@ PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& 
     if(!ariel::equalsDimension(a, b)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float aUnit = a.convert();
-        float aInBasic = aUnit * a._amount;
-        float bInBasic = b.convert() * b._amount;
-        float newAmount = (aInBasic - bInBasic)/ aUnit;
+        double aUnit = a.convert();
+        double aInBasic = aUnit * a._amount;
+        double bInBasic = b.convert() * b._amount;
+        double newAmount = (aInBasic - bInBasic)/ aUnit;
         return PhysicalNumber(newAmount, a._unit);
     }
 }
@@ -94,9 +94,9 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         this->_amount = (thisInBasic + thisInBasic)/ thisUnit;
         return *this;
     }
@@ -107,9 +107,9 @@ PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         this->_amount = (thisInBasic - thisInBasic)/ thisUnit;
         return *this;
     }
@@ -131,9 +131,9 @@ bool PhysicalNumber::operator== (const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         return (thisInBasic == otherInBasic);
     }
 }
@@ -143,9 +143,9 @@ bool PhysicalNumber::operator> (const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         return (thisInBasic > otherInBasic);
     }  
 }
@@ -155,9 +155,9 @@ bool PhysicalNumber::operator< (const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         return (thisInBasic < otherInBasic);
     }
 }
@@ -167,9 +167,9 @@ bool PhysicalNumber::operator>= (const PhysicalNumber& other){
    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         return (thisInBasic >= otherInBasic);
     } 
 }
@@ -179,9 +179,9 @@ bool PhysicalNumber::operator<= (const PhysicalNumber& other){
    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         return (thisInBasic <= otherInBasic);
     } 
 }
@@ -191,9 +191,9 @@ bool PhysicalNumber::operator!= (const PhysicalNumber& other){
    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
-        float thisUnit = this->convert();
-        float thisInBasic = thisUnit * this->_amount;
-        float otherInBasic = other.convert() * other._amount;
+        double thisUnit = this->convert();
+        double thisInBasic = thisUnit * this->_amount;
+        double otherInBasic = other.convert() * other._amount;
         return (thisInBasic != otherInBasic);
     } 
 }
