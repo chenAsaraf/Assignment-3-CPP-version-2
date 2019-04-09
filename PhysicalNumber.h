@@ -35,6 +35,7 @@ namespace ariel{
         bool operator< (const PhysicalNumber& other);
         bool operator>= (const PhysicalNumber& other);
         bool operator<= (const PhysicalNumber& other);
+        bool operator!= (const PhysicalNumber& other);
         PhysicalNumber operator++(int);
         PhysicalNumber operator--(int);
         PhysicalNumber& operator++();
