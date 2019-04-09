@@ -4,7 +4,7 @@
 #include "PhysicalNumber.h"
 
 using std::cout, std::string;
-using ariel::Unit, ariel::PhysicalNumber;
+using ariel::Unit, ariel::PhysicalNumber, ariel::equalsDimension;
 
 /*~Implamentation of PhysicalNumber class:~*/
 
@@ -31,12 +31,12 @@ const int PhysicalNumber::which_unit(){
           case KG:  ans = 8; break;
           case TON: ans = 9; break;
       }//end switch
-    const answer = ans;
+    const int answer = ans;
     return answer;
   }
 
 //Checks whether the dimensions match 
-bool ariel::equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b){
+bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b){
      int dimension_a = a.which_unit();
      int dimension_b = b.which_unit();
      if((dimension_a/3) != (dimension_b/3)) return false;
