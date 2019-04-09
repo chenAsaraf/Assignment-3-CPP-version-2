@@ -2,7 +2,7 @@
 #include <iostream>
 
 namespace ariel{
-    enum Unit: int{
+    enum class Unit: int{
         //Length
         CM, //Kilometer=0 By deafult
         M, //Meter=1
@@ -16,8 +16,5 @@ namespace ariel{
         KG, //=7
         TON //=8
     }; //end Unit
-    
- //Checks whether the dimensions match 
-bool equals(const Unit& a ,const Unit& b);
-    
+  
 } //end namespace ariel
