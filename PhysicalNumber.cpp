@@ -5,7 +5,26 @@
 #include "PhysicalNumber.h"
 
 using namespace std::cout, std::string;
-using ariel::Unit, ariel::PhysicalNumber, ariel::conversion;
+using ariel::Unit, ariel::PhysicalNumber;
+
+/*~Implamentation of PhysicalNumber class:~*/
+
+//Constructor: input- the amount and the unit's amount
+PhysicalNumber::PhysicalNumber(float amount, Unit some_unit){
+    _unit = some_unit;
+    _amount = amount;
+}
+
+
+/*~Auxulary Methods:~*/
+
+//Checks whether the dimensions match 
+bool Unit::equals(const Unit& a ,const Unit& b){
+     int dimension_a = a.which_unit();
+     int dimension_b = b.which_unit();
+     if((dimension_a/3) != (dimension_b/3)) return false;
+     else return true;
+ }
 
 //Checks what type of unit the number is 
 const int PhysicalNumber::which_unit(){
@@ -50,20 +69,7 @@ const int PhysicalNumber::which_unit(){
       }//end switch
       return ans;
   }
- 
-//  //Checks whether the dimensions match 
-// friend bool Unit::equals(const Unit& a ,const Unit& b){
-//      int dimension_a = a.which_unit();
-//      int dimension_b = b.which_unit();
-//      if((dimension_a/3) != (dimension_b/3)) return false;
-//      else return true;
-//  }
-        
-// Constructor:
-PhysicalNumber::PhysicalNumber(float amount, Unit some_unit){
-    _unit = some_unit;
-    _amount = amount;
-}
+
 
 //Auxiliary function for converting units     
 const float PhysicalNumber::convert(){
@@ -109,9 +115,10 @@ const float PhysicalNumber::convert(){
     }
 
 
+ /*~Overloading operators:~*/
 
 //Addition operator:
-friend PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& b) {
+PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& b) {
     if(!equals(a._unit, b._unit)){
         cout << "exception cout" << endl;
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
@@ -125,7 +132,7 @@ friend PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalN
 }
 
 //Subtraction operator:
-friend PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& b) {
+PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& b) {
     if(!equals(a._unit, b._unit)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
