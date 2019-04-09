@@ -8,9 +8,6 @@ using namespace std;
 
 namespace ariel{
     
-    
-    
-    
     class PhysicalNumber{
 
        public:
@@ -24,6 +21,7 @@ namespace ariel{
         
         //Auxiliary functions
         const int which_unit();
+        bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b);
         const float convert();
 
 
@@ -37,10 +35,10 @@ namespace ariel{
         bool operator< (const PhysicalNumber& other);
         bool operator>= (const PhysicalNumber& other);
         bool operator<= (const PhysicalNumber& other);
-        PhysicalNumber PhysicalNumber::operator++(int);
-        PhysicalNumber PhysicalNumber::operator--(int);
-        PhysicalNumber& PhysicalNumber::operator++();
-        PhysicalNumber& PhysicalNumber::operator--();
+        PhysicalNumber operator++(int);
+        PhysicalNumber operator--(int);
+        PhysicalNumber& operator++();
+        PhysicalNumber& operator--();
         
         friend bool equals(const Unit& a ,const Unit& b);
         friend ostream& operator<< (ostream& os, const PhysicalNumber& num);
