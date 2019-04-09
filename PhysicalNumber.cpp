@@ -35,7 +35,7 @@ int PhysicalNumber::which_unit(){
   }
 
 //Checks whether the dimensions match 
-bool ariel::equalsDimension(PhysicalNumber& a ,PhysicalNumber& b){
+bool ariel::equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b) const{
      int dimension_a = a.which_unit();
      int dimension_b = b.which_unit();
      if((dimension_a/3) != (dimension_b/3)) return false;
@@ -44,7 +44,7 @@ bool ariel::equalsDimension(PhysicalNumber& a ,PhysicalNumber& b){
 
 
 //Auxiliary function for converting units     
-float PhysicalNumber::convert(){
+float PhysicalNumber::convert() const{
         float convertUnit = 0;
         switch(_unit) {
             case CM:  convertUnit = 1; break;
