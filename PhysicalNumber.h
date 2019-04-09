@@ -14,15 +14,15 @@ namespace ariel{
        
        //for now public- later should be getters & setters
         Unit _unit;
-        float _amount;
+        double _amount;
         
         // Constructor:
-        PhysicalNumber(float amount, Unit some_unit);
+        PhysicalNumber(double amount, Unit some_unit);
         
         //Auxiliary functions
         int which_unit() const;
         friend bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b) ;
-        float convert() const;
+        double convert() const;
 
 
         //Operators
