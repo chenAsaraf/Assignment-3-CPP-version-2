@@ -47,15 +47,15 @@ bool ariel::equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b){
 double PhysicalNumber::convert() const{
         double convertUnit = 0;
         switch(_unit) {
-            case CM:  convertUnit = 1; break;
-            case M:   convertUnit = 100; break;
-            case KM:  convertUnit = 100000; break;
-            case SEC: convertUnit = 1; break;
-            case MIN: convertUnit = 60; break;
-            case HOUR:convertUnit = 3600; break;
-            case G:   convertUnit = 1; break;
-            case KG:  convertUnit = 100; break;
-            case TON: convertUnit = 1000000; break;
+            case CM:  convertUnit = 1.0; break;
+            case M:   convertUnit = 100.0; break;
+            case KM:  convertUnit = 100000.0; break;
+            case SEC: convertUnit = 1.0; break;
+            case MIN: convertUnit = 60.0; break;
+            case HOUR:convertUnit = 3600.p; break;
+            case G:   convertUnit = 1.0; break;
+            case KG:  convertUnit = 100.0; break;
+            case TON: convertUnit = 1000000.0; break;
         }
     return convertUnit;
 }
