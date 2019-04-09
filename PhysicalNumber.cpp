@@ -1,10 +1,9 @@
-#pragma once
 #include <iostream>
 #include <stdexcept>
 #include <string>
 #include "PhysicalNumber.h"
 
-using namespace std::cout, std::string;
+using std::cout, std::string;
 using ariel::Unit, ariel::PhysicalNumber;
 
 /*~Implamentation of PhysicalNumber class:~*/
@@ -17,14 +16,6 @@ PhysicalNumber::PhysicalNumber(float amount, Unit some_unit){
 
 
 /*~Auxulary Methods:~*/
-
-//Checks whether the dimensions match 
-bool Unit::equals(const Unit& a ,const Unit& b){
-     int dimension_a = a.which_unit();
-     int dimension_b = b.which_unit();
-     if((dimension_a/3) != (dimension_b/3)) return false;
-     else return true;
- }
 
 //Checks what type of unit the number is 
 const int PhysicalNumber::which_unit(){
@@ -69,6 +60,14 @@ const int PhysicalNumber::which_unit(){
       }//end switch
       return ans;
   }
+
+//Checks whether the dimensions match 
+bool PhysicalNumber::equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b){
+     int dimension_a = a.which_unit();
+     int dimension_b = b.which_unit();
+     if((dimension_a/3) != (dimension_b/3)) return false;
+     else return true;
+ }
 
 
 //Auxiliary function for converting units     
@@ -119,8 +118,7 @@ const float PhysicalNumber::convert(){
 
 //Addition operator:
 PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& b) {
-    if(!equals(a._unit, b._unit)){
-        cout << "exception cout" << endl;
+    if(!equalsDimension(a, b)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float aUnit = a.convert();
@@ -133,7 +131,7 @@ PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& 
 
 //Subtraction operator:
 PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& b) {
-    if(!equals(a._unit, b._unit)){
+    if(!equalsDimension(a, b)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float aUnit = a.convert();
@@ -146,7 +144,7 @@ PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& 
 
 //Shortcut function to add
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
-    if(!equals(this->_unit, other._unit)){
+    if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -159,7 +157,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
 
 //Shortcut function to subtraction
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
-    if(!equals(this->_unit, other._unit)){
+    if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -183,7 +181,7 @@ PhysicalNumber& PhysicalNumber::operator+ (){
 
 //Equals operator:    
 bool PhysicalNumber::operator== (const PhysicalNumber& other){
-    if(!equals(this->_unit, other._unit)){
+    if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -195,7 +193,7 @@ bool PhysicalNumber::operator== (const PhysicalNumber& other){
 
 //Greater operator:    
 bool PhysicalNumber::operator> (const PhysicalNumber& other){
-    if(!equals(this->_unit, other._unit)){
+    if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -206,8 +204,8 @@ bool PhysicalNumber::operator> (const PhysicalNumber& other){
 }
 
 //Smaller then oerator:
-bool PhysicalNumber::operator< (const PhysicalNumber& b){
-    if(!equals(this->_unit, other._unit)){
+bool PhysicalNumber::operator< (const PhysicalNumber& other){
+    if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -219,7 +217,7 @@ bool PhysicalNumber::operator< (const PhysicalNumber& b){
 
 //Greater then or equals operator: 
 bool PhysicalNumber::operator>= (const PhysicalNumber& other){
-   if(!equals(this->_unit, other._unit)){
+   if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -231,7 +229,7 @@ bool PhysicalNumber::operator>= (const PhysicalNumber& other){
 
 //Smaller then or equals operator: 
 bool PhysicalNumber::operator<= (const PhysicalNumber& b){
-   if(!equals(this->_unit, other._unit)){
+   if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -243,7 +241,7 @@ bool PhysicalNumber::operator<= (const PhysicalNumber& b){
 
 //Not equals operator:
 bool PhysicalNumber::operator!= (const PhysicalNumber& other){
-   if(!equals(this->_unit, other._unit)){
+   if(!equalsDimension(this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
@@ -256,17 +254,6 @@ bool PhysicalNumber::operator!= (const PhysicalNumber& other){
 //Output operator
 ostream& ariel::operator<<(ostream& os, const PhysicalNumber& num) {
     string type[9] = {"[cm]","[m]","[km]","[sec]","[min]","[hour]","[g]","[kg]","[ton]"};
-    // string printUnit;
-    // switch(num._unit){
-    //     case Unit::KM: { printUnit = "[km]"; break;}
-    //     case Unit::M: { printUnit = "[m]"; break}
-    //     case Unit::CM: { printUnit = "[cm]"; break;}
-    //     case Unit::SEC: { printUnit = "[sec]"; break; }
-    //     case Unit::HOUR: { printUnit = "[hour]"; break; }
-    //     case Unit::G: { printUnit = "[g]"; break; }
-    //     case Unit::KG: { printUnit = "[kg]"; break; }
-    //     case Unit::TON: { printUnit = "[ton]"; break; }
-    // } return os << num.amount << '[' << printUnit << ']';
     return os<<num._amount<<type[int(num._unit)];
 }
 
