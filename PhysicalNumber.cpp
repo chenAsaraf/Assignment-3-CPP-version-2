@@ -4,7 +4,7 @@
 #include "PhysicalNumber.h"
 
 using std::cout, std::string;
-using ariel::Unit, ariel::PhysicalNumbe;
+using ariel::Unit, ariel::PhysicalNumber;
 
 /*~Implamentation of PhysicalNumber class:~*/
 
@@ -175,7 +175,7 @@ bool PhysicalNumber::operator>= (const PhysicalNumber& other){
 }
 
 //Smaller then or equals operator: 
-bool PhysicalNumber::operator<= (const PhysicalNumber& b){
+bool PhysicalNumber::operator<= (const PhysicalNumber& other){
    if(!ariel::equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
