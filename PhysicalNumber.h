@@ -21,7 +21,7 @@ namespace ariel{
         
         //Auxiliary functions
         int which_unit() const;
-        friend bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b) const;
+        friend bool equalsDimension(PhysicalNumber& a ,PhysicalNumber& b) ;
         float convert() const;
 
 
