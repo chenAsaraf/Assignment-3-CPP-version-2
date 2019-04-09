@@ -21,7 +21,7 @@ namespace ariel{
         
         //Auxiliary functions
         const int which_unit();
-        bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b);
+        friend bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b);
         const float convert();
 
 
@@ -54,6 +54,6 @@ namespace ariel{
     istream& operator>> (istream& is, PhysicalNumber& num);    
     PhysicalNumber operator+ (const PhysicalNumber& a, const PhysicalNumber& b);
     PhysicalNumber operator-(const PhysicalNumber& a, const PhysicalNumber& b);
-    
+    bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b);r
 
 }//end of namespace ariel
