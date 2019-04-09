@@ -65,7 +65,7 @@ float PhysicalNumber::convert() const{
 
 //Addition operator:
 PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& b) {
-    if(!equalsDimension(a, b)){
+    if(!ariel::equalsDimension(a, b)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float aUnit = a.convert();
@@ -91,7 +91,7 @@ PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& 
 
 //Shortcut function to add
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
-    if(!equalsDimension(this, other)){
+    if(!equalsDimension(*this, other)){
         throw std::invalid_argument("error, the dimension is not equals and you're fired.");
     } else{
         float thisUnit = this->convert();
