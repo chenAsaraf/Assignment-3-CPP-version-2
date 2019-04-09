@@ -2,7 +2,7 @@
 #include <iostream>
 
 namespace ariel{
-    enum class Unit: int{
+    enum Unit: int{
         //Length
         CM, //Kilometer=0 By deafult
         M, //Meter=1
