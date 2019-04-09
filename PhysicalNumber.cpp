@@ -66,7 +66,7 @@ double PhysicalNumber::convert() const{
 //Addition operator:
 PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& b) {
     if(!ariel::equalsDimension(a, b)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double aUnit = a.convert();
         double aInBasic = aUnit * a._amount;
@@ -79,11 +79,11 @@ PhysicalNumber ariel::operator+ (const PhysicalNumber& a, const PhysicalNumber& 
 //Subtraction operator:
 PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& b) {
     if(!ariel::equalsDimension(a, b)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals");
     } else{
         double aUnit = a.convert();
-        double aInBasic = aUnit * a._amount;
-        double bInBasic = b.convert() * b._amount;
+        double aInBasic = (aUnit * a._amount);
+        double bInBasic = (b.convert() * b._amount);
         double newAmount = (aInBasic - bInBasic)/ aUnit;
         return PhysicalNumber(newAmount, a._unit);
     }
@@ -92,11 +92,11 @@ PhysicalNumber ariel::operator- (const PhysicalNumber& a, const PhysicalNumber& 
 //Shortcut function to add
 PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double thisUnit = this->convert();
-        double thisInBasic = thisUnit * this->_amount;
-        double otherInBasic = other.convert() * other._amount;
+        double thisInBasic = (thisUnit * this->_amount);
+        double otherInBasic = (other.convert() * other._amount);
         this->_amount = (thisInBasic + thisInBasic)/ thisUnit;
         return *this;
     }
@@ -105,7 +105,7 @@ PhysicalNumber& PhysicalNumber::operator+=(const PhysicalNumber& other){
 //Shortcut function to subtraction
 PhysicalNumber& PhysicalNumber::operator-=(const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double thisUnit = this->convert();
         double thisInBasic = thisUnit * this->_amount;
@@ -129,7 +129,7 @@ PhysicalNumber& PhysicalNumber::operator+ (){
 //Equals operator:    
 bool PhysicalNumber::operator== (const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double thisUnit = this->convert();
         double thisInBasic = thisUnit * this->_amount;
@@ -141,7 +141,7 @@ bool PhysicalNumber::operator== (const PhysicalNumber& other){
 //Greater operator:    
 bool PhysicalNumber::operator> (const PhysicalNumber& other){
     if(!ariel::equalsDimension(*this, other)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double thisUnit = this->convert();
         double thisInBasic = thisUnit * this->_amount;
@@ -165,7 +165,7 @@ bool PhysicalNumber::operator< (const PhysicalNumber& other){
 //Greater then or equals operator: 
 bool PhysicalNumber::operator>= (const PhysicalNumber& other){
    if(!ariel::equalsDimension(*this, other)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double thisUnit = this->convert();
         double thisInBasic = thisUnit * this->_amount;
@@ -177,7 +177,7 @@ bool PhysicalNumber::operator>= (const PhysicalNumber& other){
 //Smaller then or equals operator: 
 bool PhysicalNumber::operator<= (const PhysicalNumber& other){
    if(!ariel::equalsDimension(*this, other)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double thisUnit = this->convert();
         double thisInBasic = thisUnit * this->_amount;
@@ -189,7 +189,7 @@ bool PhysicalNumber::operator<= (const PhysicalNumber& other){
 //Not equals operator:
 bool PhysicalNumber::operator!= (const PhysicalNumber& other){
    if(!ariel::equalsDimension(*this, other)){
-        throw std::invalid_argument("error, the dimension is not equals and you're fired.");
+        throw std::invalid_argument("error, the dimension is not equals.");
     } else{
         double thisUnit = this->convert();
         double thisInBasic = thisUnit * this->_amount;
