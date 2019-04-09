@@ -52,7 +52,7 @@ double PhysicalNumber::convert() const{
             case KM:  convertUnit = 100000.0; break;
             case SEC: convertUnit = 1.0; break;
             case MIN: convertUnit = 60.0; break;
-            case HOUR:convertUnit = 3600.p; break;
+            case HOUR:convertUnit = 3600.0; break;
             case G:   convertUnit = 1.0; break;
             case KG:  convertUnit = 100.0; break;
             case TON: convertUnit = 1000000.0; break;
