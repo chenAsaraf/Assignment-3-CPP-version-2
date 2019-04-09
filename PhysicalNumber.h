@@ -20,9 +20,9 @@ namespace ariel{
         PhysicalNumber(float amount, Unit some_unit);
         
         //Auxiliary functions
-        const int which_unit();
+        int which_unit();
         friend bool equalsDimension(const PhysicalNumber& a ,const PhysicalNumber& b);
-        const float convert();
+        float convert();
 
 
         //Operators
@@ -49,7 +49,6 @@ namespace ariel{
     }; //end of PhysicalNumber
     
     //Friend operators
-    bool equals(const Unit& a ,const Unit& b);
     ostream& operator<< (ostream& os, const PhysicalNumber& num);
     istream& operator>> (istream& is, PhysicalNumber& num);    
     PhysicalNumber operator+ (const PhysicalNumber& a, const PhysicalNumber& b);
